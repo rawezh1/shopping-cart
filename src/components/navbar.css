@@ -1,0 +1,20 @@
+ul {
+    list-style:none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+li {
+    margin-right: 20px;
+}
+nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: rgb(1, 109, 211);
+    color: white;
+}
+.nav-bar {
+    position:sticky;
+    top:0;
+}
