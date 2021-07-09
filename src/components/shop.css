@@ -7,11 +7,21 @@
 .card {
   align-items: center;
   width: 40%;
+  height: 50vh;
   margin:10px;
   background-color: #EEEEEE;
   box-shadow: black 1px 1px 10px;
   border-radius: 20px;
-  background-size: contain;
+  background-size: cover;
+}
+.card-cover {
+    max-height: 100%;
+    max-width: 90%;
+    background-color:rgba(255, 255, 255, 0.76);
+    margin: auto;
+    margin-top: 8%;
+    border-radius: 20px;
+    
 }
 .card-title {
     color: #393E46;
