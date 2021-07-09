@@ -5,7 +5,7 @@ function Shop(props) {
   const makeCards = () => {
     return props.cardInfo.map((card, index) => {
       return (
-        <div key={index} className='card'>
+        <div key={index} className='card' style={{backgroundImage:`${card.src}`}}>
           <h1 className='card-title'>{card.name}</h1>
           <img className='card-img' src={card.src} alt=''>
           </img>
