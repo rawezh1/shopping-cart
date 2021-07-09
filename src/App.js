@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import NavBar from './components/nav-bar';
 import Home from './components/homepage';
 import Shop from './components/shop';
+import Cart from './components/cart';
 import Beetroot from './components/images/beetroot.webp';
 import Classic from './components/images/classic.jpg';
 import Avocado from './components/images/avocado.jpg';
@@ -43,21 +44,25 @@ function App() {
   };
   const cardInfo = [classic, beetroot, potato, avocado];
   const cartInit = {
-    calssic: 0,
-    beetroot: 0,
-    potato: 0,
-    avocado: 0,
+    classic: {name:'Classic Hummus',quantity:1,price:1},
+    beetroot: {name:'Beetroot Hummus',quantity:3,price:2},
+    potato: {name:'Potato Hummus',quantity:0,price:3},
+    avocado: {name:'Avocado Hummus',quantity:0,price:5},
   };
   const [cart, setCart] = useState(cartInit);
   const addItem = (e) => {
     let newCart = cart;
-    newCart[e.target.id] += 1
+    console.log(e.target.id)
+    newCart[`${e.target.id}`].quantity += 1
+    console.log(cart)
     setCart(newCart);
   };
+  //<Shop clickHandler={addItem} cardInfo={cardInfo} />
+  //
   return (
     <div className='App'>
       <NavBar />
-      <Shop clickHandler={addItem} cardInfo={cardInfo} />
+      <Cart cartContent={Object.values(cart)}/>
     </div>
   );
 }
