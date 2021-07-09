@@ -1,0 +1,51 @@
+.cart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height:90vh;
+}
+.empty-cart {
+    width: 50vw;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+.empty-cart > img {
+    object-fit: contain;
+}
+.empty-cart > h4 {
+    font-size: x-large;
+    font-family: sans-serif;
+}
+.empty-cart > button {
+    font-family: monospace;
+    width: 20vw;
+    height: 15vh;
+    border-radius: 0;
+}
+.empty-cart > button:hover {
+    background-color: black;
+    color: white;
+}
+.item-table {
+    margin-top: 5%;
+    width:60%;
+    border-collapse: collapse;
+}
+.header-row {
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    height: 20vh;
+}
+.item-row {
+    border-bottom:1px solid;
+    height: 8vh;
+}
+.table-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width:100%;
+}
