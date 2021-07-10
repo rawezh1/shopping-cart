@@ -6,3 +6,23 @@ html body {
   text-align: center;
   padding: 0;
 }
+ul > a{
+  text-decoration: none;
+  text-align: center;
+  color:white;
+  padding:8%;
+  transition: 50ms;
+}
+ul > a:hover {
+  background-color: rgba(0, 0, 0, 0.473);
+  transform: scale(1.1);
+    text-shadow: 0 0 10px rgba(255,255,255, 1),
+    0 0 50px rgba(255, 255, 255, .8),
+    0 0 75px rgba(255, 255, 255, .6),
+    0 0 76px rgba(255, 255, 255, .4),
+    0 0 77px rgba(255, 255, 255, .5),
+    0 0 78px rgba(255, 255, 255, .4),
+    0 0 79px rgba(255, 255, 255, .3),
+    0 0 80px rgba(255, 255, 255, .2),
+    0 0 85px rgba(255, 255, 255, .1); 
+}

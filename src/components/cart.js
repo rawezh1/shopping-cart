@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import './cart.css';
 import EmptyCart from './images/empty-cart.png';
+import { Link } from 'react-router-dom';
 
 function Cart(props) {
   const total = (arr) => {
     const arrValues = arr.map((item) => {
-      return item.quantity*item.price;
+      return item.quantity * item.price;
     });
     return arrValues.reduce((sum, num) => sum + num, 0);
   };
@@ -21,7 +22,9 @@ function Cart(props) {
       <div className='empty-cart'>
         <img src={EmptyCart} alt=''></img>
         <h4>Your Cart is Empty</h4>
-        <button>Shop Now</button>
+        <Link to='/shop' className='link'>
+          <button className='shop-now'>Shop Now</button>
+        </Link>
       </div>
     );
   };
@@ -29,19 +32,19 @@ function Cart(props) {
     return (
       <div className='table-container'>
         <table className='item-table'>
-        <thead>
-          <tr className='header-row'>
-            <th>Product Type</th>
-            <th>Price Per Item</th>
-            <th>Quantity</th>
-            <th>Total</th>
-          </tr>
-        </thead>
-        <tbody>{generateRows()}</tbody>
-      </table>
-      <p>Sum Total = ${total(props.cartContent)}</p>
+          <thead>
+            <tr className='header-row'>
+              <th>Product Type</th>
+              <th>Price Per Item</th>
+              <th>Quantity</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody>{generateRows()}</tbody>
+        </table>
+        <p>Sum Total = ${total(props.cartContent)}</p>
+        <button>Checkout</button>
       </div>
-      
     );
   };
   const generateRows = () => {
@@ -53,7 +56,11 @@ function Cart(props) {
           <th>${item.price}</th>
           <th>{item.quantity}</th>
           <th>${item.price * item.quantity}</th>
-          <th><button>Remove Item</button></th>
+          <th>
+            <button id={item.id} onClick={props.clickHandler}>
+              Remove Item
+            </button>
+          </th>
         </tr>
       );
     });

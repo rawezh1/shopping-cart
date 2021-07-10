@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import NavBar from './components/nav-bar';
 import Home from './components/homepage';
 import Shop from './components/shop';
@@ -44,26 +45,46 @@ function App() {
   };
   const cardInfo = [classic, beetroot, potato, avocado];
   const cartInit = {
-    classic: {name:'Classic Hummus',quantity:1,price:1},
-    beetroot: {name:'Beetroot Hummus',quantity:3,price:2},
-    potato: {name:'Potato Hummus',quantity:0,price:3},
-    avocado: {name:'Avocado Hummus',quantity:0,price:5},
+    classic: { id: 'classic', name: 'Classic Hummus', quantity: 0, price: 1 },
+    beetroot: {
+      id: 'beetroot',
+      name: 'Beetroot Hummus',
+      quantity: 0,
+      price: 2,
+    },
+    potato: { id: 'potato', name: 'Potato Hummus', quantity: 0, price: 3 },
+    avocado: { id: 'avocado', name: 'Avocado Hummus', quantity: 0, price: 5 },
   };
   const [cart, setCart] = useState(cartInit);
   const addItem = (e) => {
     let newCart = cart;
-    console.log(e.target.id)
-    newCart[`${e.target.id}`].quantity += 1
-    console.log(cart)
+    newCart[`${e.target.id}`].quantity += 1;
     setCart(newCart);
   };
-  //<Shop clickHandler={addItem} cardInfo={cardInfo} />
+  const removeItem = (e) => {
+    let newCart = { ...cart };
+    newCart[e.target.id].quantity -= 1;
+    setCart(newCart);
+  };
+  //
   //
   return (
-    <div className='App'>
-      <NavBar />
-      <Cart cartContent={Object.values(cart)}/>
-    </div>
+    <Router>
+      <div className='App'>
+        <NavBar />
+        <Switch>
+          <Route path='/' exact>
+            <Home />
+          </Route>
+          <Route path='/cart' exact>
+            <Cart clickHandler={removeItem} cartContent={Object.values(cart)} />
+          </Route>
+          <Route path='/shop' exact>
+            <Shop clickHandler={addItem} cardInfo={cardInfo} />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 

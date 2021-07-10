@@ -3,6 +3,7 @@ ul {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    right:10%;
 }
 li {
     margin-right: 20px;
@@ -18,3 +19,9 @@ nav {
     position:sticky;
     top:0;
 }
+.logo {
+    position: absolute;
+    height:100%;
+    width:20%;
+    left:0;
+  }
