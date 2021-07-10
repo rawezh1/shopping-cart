@@ -4,12 +4,15 @@ import EmptyCart from './images/empty-cart.png';
 import { Link } from 'react-router-dom';
 
 function Cart(props) {
+  // Calculate the total cost of all items by making an array of (quantities multiplied by 
+  // prices) and summing over them.
   const total = (arr) => {
     const arrValues = arr.map((item) => {
       return item.quantity * item.price;
     });
     return arrValues.reduce((sum, num) => sum + num, 0);
   };
+  // Show an empty cart page if cart is empty, show items and total otherwise.
   const renderCart = () => {
     if (total(props.cartContent) === 0) {
       return showEmpty();
@@ -17,6 +20,7 @@ function Cart(props) {
       return showItems();
     }
   };
+  // Make an empty page of an Image, warning and link to shop.
   const showEmpty = () => {
     return (
       <div className='empty-cart'>
@@ -28,6 +32,7 @@ function Cart(props) {
       </div>
     );
   };
+  // Make a table of items
   const showItems = () => {
     return (
       <div className='table-container'>
@@ -47,6 +52,7 @@ function Cart(props) {
       </div>
     );
   };
+  // Make a row dynamically depending on the number of items in cart.
   const generateRows = () => {
     const nonZeroItems = props.cartContent.filter((item) => item.quantity > 0);
     return nonZeroItems.map((item, index) => {

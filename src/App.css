@@ -10,11 +10,9 @@ ul > a{
   text-decoration: none;
   text-align: center;
   color:white;
-  padding:8%;
   transition: 50ms;
 }
 ul > a:hover {
-  background-color: rgba(0, 0, 0, 0.473);
   transform: scale(1.1);
     text-shadow: 0 0 10px rgba(255,255,255, 1),
     0 0 50px rgba(255, 255, 255, .8),

@@ -11,6 +11,7 @@ import Potato from './components/images/potato.webp';
 import './App.css';
 
 function App() {
+  // Initialize products
   const classic = {
     src: Classic,
     id: 'classic',
@@ -56,22 +57,22 @@ function App() {
     avocado: { id: 'avocado', name: 'Avocado Hummus', quantity: 0, price: 5 },
   };
   const [cart, setCart] = useState(cartInit);
+  // Add an item to cart on click
   const addItem = (e) => {
-    let newCart = cart;
+    let newCart = { ...cart };
     newCart[`${e.target.id}`].quantity += 1;
     setCart(newCart);
   };
+  // Remove an item from the cart on click
   const removeItem = (e) => {
     let newCart = { ...cart };
     newCart[e.target.id].quantity -= 1;
     setCart(newCart);
   };
-  //
-  //
   return (
     <Router>
       <div className='App'>
-        <NavBar />
+        <NavBar cartContent={Object.values(cart)}/>
         <Switch>
           <Route path='/' exact>
             <Home />
